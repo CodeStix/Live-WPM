@@ -1,4 +1,4 @@
-﻿namespace Stx
+﻿namespace LiveWPM
 {
     partial class FormWPM
     {

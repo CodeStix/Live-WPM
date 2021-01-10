@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 
-namespace Stx
+namespace LiveWPM
 {
     public partial class FormWPM : Form
     {
@@ -22,11 +22,23 @@ namespace Stx
         public FormWPM()
         {
             InitializeComponent();
+            FormClosing += FormWPM_FormClosing;
+        }
+
+        private void FormWPM_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            WindowsKeyboardHook.OnGlobalKey -= WindowsKeyboardHook_OnGlobalKey;
         }
 
         private void FormWPM_Load(object sender, EventArgs e)
         {
             history = new int[MOVING_AVERAGE];
+            WindowsKeyboardHook.OnGlobalKey += WindowsKeyboardHook_OnGlobalKey;
+        }
+
+        private void WindowsKeyboardHook_OnGlobalKey(Keys obj)
+        {
+            currentKeyPresses++;
         }
 
         private void ShiftHistory(int lastValue)
