@@ -42,7 +42,6 @@
             this.labelWPM.Name = "labelWPM";
             this.labelWPM.Size = new System.Drawing.Size(609, 144);
             this.labelWPM.TabIndex = 0;
-            this.labelWPM.Text = "500 wpm";
             // 
             // updateTimer
             // 
