@@ -31,10 +31,16 @@
             this.components = new System.ComponentModel.Container();
             this.labelWPM = new System.Windows.Forms.Label();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.showWPMSuffixToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelWPM
             // 
+            this.labelWPM.ContextMenuStrip = this.contextMenuStrip1;
             this.labelWPM.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelWPM.Font = new System.Drawing.Font("Fira Code", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWPM.ForeColor = System.Drawing.Color.Lime;
@@ -48,6 +54,35 @@
             this.updateTimer.Enabled = true;
             this.updateTimer.Interval = 1000;
             this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.showWPMSuffixToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 76);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // showWPMSuffixToolStripMenuItem
+            // 
+            this.showWPMSuffixToolStripMenuItem.CheckOnClick = true;
+            this.showWPMSuffixToolStripMenuItem.Name = "showWPMSuffixToolStripMenuItem";
+            this.showWPMSuffixToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showWPMSuffixToolStripMenuItem.Text = "Show WPM suffix";
+            this.showWPMSuffixToolStripMenuItem.CheckedChanged += new System.EventHandler(this.showWPMSuffixToolStripMenuItem_CheckedChanged);
             // 
             // FormWPM
             // 
@@ -65,6 +100,7 @@
             this.TransparencyKey = System.Drawing.Color.Black;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormWPM_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -73,6 +109,10 @@
 
         private System.Windows.Forms.Label labelWPM;
         private System.Windows.Forms.Timer updateTimer;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem showWPMSuffixToolStripMenuItem;
     }
 }
 

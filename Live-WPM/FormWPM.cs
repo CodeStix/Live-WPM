@@ -13,12 +13,11 @@ namespace LiveWPM
 {
     public partial class FormWPM : Form
     {
-        public int[] history;
-
-        public int currentKeyPresses = 0;
+        private int[] history;
+        private int currentKeyPresses = 0;
+        private bool showSuffix = true;
 
         public const int MOVING_AVERAGE = 5;
-
         public static readonly Keys[] IGNORED_KEYS = new Keys[] { 
             Keys.Back, Keys.ShiftKey, Keys.LShiftKey, Keys.RShiftKey,
             Keys.Shift, Keys.Alt, Keys.Control, Keys.ControlKey, Keys.RControlKey, Keys.LControlKey, 
@@ -29,6 +28,7 @@ namespace LiveWPM
         {
             InitializeComponent();
             FormClosing += FormWPM_FormClosing;
+            showWPMSuffixToolStripMenuItem.Checked = showSuffix;
         }
 
         private void FormWPM_FormClosing(object sender, FormClosingEventArgs e)
@@ -72,7 +72,18 @@ namespace LiveWPM
             ShiftHistory(currentKeyPresses);
             currentKeyPresses = 0;
 
-            labelWPM.Text = $"{GetWPM()} WPM";
+            labelWPM.Text = $"{GetWPM()}" + (showSuffix ? " WPM" : "");
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+            //Environment.Exit(0);
+        }
+
+        private void showWPMSuffixToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            showSuffix = showWPMSuffixToolStripMenuItem.Checked;
         }
     }
 }
