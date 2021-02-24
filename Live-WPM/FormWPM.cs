@@ -16,6 +16,7 @@ namespace LiveWPM
         private int[] history;
         private int currentKeyPresses = 0;
         private bool showSuffix = true;
+        private bool enableSmoothing = true;
         private float lerpingWPM = 0f;
         private float currentWPM = 0f;
 
@@ -31,6 +32,7 @@ namespace LiveWPM
             InitializeComponent();
             FormClosing += FormWPM_FormClosing;
             showWPMSuffixToolStripMenuItem.Checked = showSuffix;
+            enableSmoothingToolStripMenuItem.Checked = enableSmoothing;
         }
 
         private void FormWPM_FormClosing(object sender, FormClosingEventArgs e)
@@ -74,8 +76,6 @@ namespace LiveWPM
             ShiftHistory(currentKeyPresses);
             currentKeyPresses = 0;
             currentWPM = CalculateWPM();
-
-           
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -96,9 +96,21 @@ namespace LiveWPM
 
         private void lerpTimer_Tick(object sender, EventArgs e)
         {
-            lerpingWPM = Lerp(lerpingWPM, currentWPM, 0.1f);
+            if (enableSmoothing)
+            {
+                lerpingWPM = Lerp(lerpingWPM, currentWPM, 0.1f);
+            }
+            else
+            {
+                lerpingWPM = currentWPM;
+            }
 
             labelWPM.Text = $"{Math.Round(lerpingWPM)}" + (showSuffix ? " WPM" : "");
+        }
+
+        private void enableSmoothingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            enableSmoothing = enableSmoothingToolStripMenuItem.Checked;
         }
     }
 }

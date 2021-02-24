@@ -36,6 +36,7 @@
             this.showWPMSuffixToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.lerpTimer = new System.Windows.Forms.Timer(this.components);
+            this.enableSmoothingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,9 +56,10 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem,
             this.toolStripSeparator1,
-            this.showWPMSuffixToolStripMenuItem});
+            this.showWPMSuffixToolStripMenuItem,
+            this.enableSmoothingToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 54);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 98);
             // 
             // exitToolStripMenuItem
             // 
@@ -91,6 +93,14 @@
             this.lerpTimer.Interval = 50;
             this.lerpTimer.Tick += new System.EventHandler(this.lerpTimer_Tick);
             // 
+            // enableSmoothingToolStripMenuItem
+            // 
+            this.enableSmoothingToolStripMenuItem.CheckOnClick = true;
+            this.enableSmoothingToolStripMenuItem.Name = "enableSmoothingToolStripMenuItem";
+            this.enableSmoothingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.enableSmoothingToolStripMenuItem.Text = "Enable smoothing";
+            this.enableSmoothingToolStripMenuItem.Click += new System.EventHandler(this.enableSmoothingToolStripMenuItem_Click);
+            // 
             // FormWPM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,6 +131,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem showWPMSuffixToolStripMenuItem;
         private System.Windows.Forms.Timer lerpTimer;
+        private System.Windows.Forms.ToolStripMenuItem enableSmoothingToolStripMenuItem;
     }
 }
 
