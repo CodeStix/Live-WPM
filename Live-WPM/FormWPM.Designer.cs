@@ -43,8 +43,8 @@
             // 
             this.labelWPM.ContextMenuStrip = this.contextMenuStrip1;
             this.labelWPM.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelWPM.Font = new System.Drawing.Font("Fira Code", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWPM.ForeColor = System.Drawing.Color.Lime;
+            this.labelWPM.Font = new System.Drawing.Font("Bahnschrift Condensed", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWPM.ForeColor = System.Drawing.Color.Yellow;
             this.labelWPM.Location = new System.Drawing.Point(0, 0);
             this.labelWPM.Name = "labelWPM";
             this.labelWPM.Size = new System.Drawing.Size(609, 144);

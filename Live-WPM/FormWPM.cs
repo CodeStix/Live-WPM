@@ -19,7 +19,7 @@ namespace LiveWPM
         private float lerpingWPM = 0f;
         private float currentWPM = 0f;
 
-        public const int MOVING_AVERAGE = 10;
+        public const int MOVING_AVERAGE = 5;
         public static readonly Keys[] IGNORED_KEYS = new Keys[] { 
             Keys.Back, Keys.ShiftKey, Keys.LShiftKey, Keys.RShiftKey,
             Keys.Shift, Keys.Alt, Keys.Control, Keys.ControlKey, Keys.RControlKey, Keys.LControlKey, 
@@ -96,7 +96,7 @@ namespace LiveWPM
 
         private void lerpTimer_Tick(object sender, EventArgs e)
         {
-            lerpingWPM = Lerp(lerpingWPM, currentWPM, 0.15f);
+            lerpingWPM = Lerp(lerpingWPM, currentWPM, 0.1f);
 
             labelWPM.Text = $"{Math.Round(lerpingWPM)}" + (showSuffix ? " WPM" : "");
         }
