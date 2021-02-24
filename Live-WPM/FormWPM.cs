@@ -16,8 +16,10 @@ namespace LiveWPM
         private int[] history;
         private int currentKeyPresses = 0;
         private bool showSuffix = true;
+        private float lerpingWPM = 0f;
+        private float currentWPM = 0f;
 
-        public const int MOVING_AVERAGE = 5;
+        public const int MOVING_AVERAGE = 10;
         public static readonly Keys[] IGNORED_KEYS = new Keys[] { 
             Keys.Back, Keys.ShiftKey, Keys.LShiftKey, Keys.RShiftKey,
             Keys.Shift, Keys.Alt, Keys.Control, Keys.ControlKey, Keys.RControlKey, Keys.LControlKey, 
@@ -57,22 +59,23 @@ namespace LiveWPM
             history[history.Length - 1] = lastValue;
         }
 
-        private float GetWPM()
+        private float CalculateWPM()
         {
             float wpm = 0;
             for(int i = 0; i < history.Length; i++)
             {
                 wpm += history[i] / 5f * 60f;
             }
-            return (float)Math.Round(wpm / history.Length);
+            return wpm / history.Length;
         }
 
         private void updateTimer_Tick(object sender, EventArgs e)
         {
             ShiftHistory(currentKeyPresses);
             currentKeyPresses = 0;
+            currentWPM = CalculateWPM();
 
-            labelWPM.Text = $"{GetWPM()}" + (showSuffix ? " WPM" : "");
+           
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,6 +87,18 @@ namespace LiveWPM
         private void showWPMSuffixToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
             showSuffix = showWPMSuffixToolStripMenuItem.Checked;
+        }
+
+        private float Lerp(float a, float b, float t)
+        {
+            return (1f - t) * a + t * b;
+        }
+
+        private void lerpTimer_Tick(object sender, EventArgs e)
+        {
+            lerpingWPM = Lerp(lerpingWPM, currentWPM, 0.15f);
+
+            labelWPM.Text = $"{Math.Round(lerpingWPM)}" + (showSuffix ? " WPM" : "");
         }
     }
 }

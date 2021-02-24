@@ -30,11 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.labelWPM = new System.Windows.Forms.Label();
-            this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.showWPMSuffixToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateTimer = new System.Windows.Forms.Timer(this.components);
+            this.lerpTimer = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,12 +50,6 @@
             this.labelWPM.Size = new System.Drawing.Size(609, 144);
             this.labelWPM.TabIndex = 0;
             // 
-            // updateTimer
-            // 
-            this.updateTimer.Enabled = true;
-            this.updateTimer.Interval = 1000;
-            this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -62,27 +57,39 @@
             this.toolStripSeparator1,
             this.showWPMSuffixToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 54);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
             // 
             // showWPMSuffixToolStripMenuItem
             // 
             this.showWPMSuffixToolStripMenuItem.CheckOnClick = true;
             this.showWPMSuffixToolStripMenuItem.Name = "showWPMSuffixToolStripMenuItem";
-            this.showWPMSuffixToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showWPMSuffixToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.showWPMSuffixToolStripMenuItem.Text = "Show WPM suffix";
             this.showWPMSuffixToolStripMenuItem.CheckedChanged += new System.EventHandler(this.showWPMSuffixToolStripMenuItem_CheckedChanged);
+            // 
+            // updateTimer
+            // 
+            this.updateTimer.Enabled = true;
+            this.updateTimer.Interval = 1000;
+            this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
+            // 
+            // lerpTimer
+            // 
+            this.lerpTimer.Enabled = true;
+            this.lerpTimer.Interval = 50;
+            this.lerpTimer.Tick += new System.EventHandler(this.lerpTimer_Tick);
             // 
             // FormWPM
             // 
@@ -113,6 +120,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem showWPMSuffixToolStripMenuItem;
+        private System.Windows.Forms.Timer lerpTimer;
     }
 }
 
