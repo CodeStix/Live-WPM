@@ -19,6 +19,12 @@ namespace LiveWPM
 
         public const int MOVING_AVERAGE = 5;
 
+        public static readonly Keys[] IGNORED_KEYS = new Keys[] { 
+            Keys.Back, Keys.ShiftKey, Keys.LShiftKey, Keys.RShiftKey,
+            Keys.Shift, Keys.Alt, Keys.Control, Keys.ControlKey, Keys.RControlKey, Keys.LControlKey, 
+            Keys.CapsLock, Keys.LWin, Keys.RWin
+        };
+
         public FormWPM()
         {
             InitializeComponent();
@@ -38,6 +44,8 @@ namespace LiveWPM
 
         private void WindowsKeyboardHook_OnGlobalKey(Keys obj)
         {
+            if (IGNORED_KEYS.Contains(obj)) 
+                return;
             currentKeyPresses++;
         }
 
@@ -56,7 +64,7 @@ namespace LiveWPM
             {
                 wpm += history[i] / 5f * 60f;
             }
-            return wpm / history.Length;
+            return (float)Math.Round(wpm / history.Length);
         }
 
         private void updateTimer_Tick(object sender, EventArgs e)
